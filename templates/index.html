@@ -1,0 +1,46 @@
+{% include 'header.html' %}
+
+<!-- 지도 화면 -->
+  <div id="map" ></div>
+
+<!-- 좌측 navigation toggle -->
+<div class="toggler">
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+</div>
+<div class="navbar-side collapse" id="navbarTogglerDemo01">
+  <div class="navbar-list">
+    <div class="memberInfo">
+        <a href="/logout">로그아웃</a>
+    </div>
+    <div class="navbar-items">
+      <ul>
+          <li id="home-btn">나의 맛집지도</li>
+        <li id="add-place-btn">맛집 추가</li>
+        <li id="group-btn">나의 그룹</li>
+        <li>그룹 찾기</li>
+        <li>그룹 찾기</li>
+      </ul>
+    </div>
+     <div id="footer">
+      <p>(c) 2021-2021 Matchelin. All Rights Reserved.</p>
+    </div>
+  </div>
+</div>
+
+  <div class="scrollArea" id="scroll-area">
+
+    {% include 'console/main-console.html' %}
+
+    {% include 'console/add-place.html' %}
+    {% include 'console/rate-place.html' %}
+
+    {% include 'console/group-console.html' %}
+    {% include 'console/add-group.html' %}
+    {% include 'console/group-info.html' %}
+
+  </div>
+
+
+{% include 'footer.html' %}

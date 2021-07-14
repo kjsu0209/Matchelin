@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Gothic+A1:300,400,700');
+body { font-family: 'Do Hyeon', sans-serif;, cursive; margin: 0; padding: 0; }
+.full-screen { width: 100vw; min-height: 100vh; }
+.flex-center { display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.text-xl { font-size: 4rem; }
+
+
+#map{
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    position: fixed;
+}
+
+.toggler{
+    z-index: 3;
+    position: fixed;
+    top: 2rem;
+    left: 2rem;
+    background-color: tomato;
+    color: white;
+
+    border-radius: 50%;
+}
+
+.navbar-toggler{
+    width: 3rem;
+    height: 3rem;
+    color: white;
+}
+
+.memberInfo{
+    float: right;
+    position: relative;
+    top: 3rem;
+    right: 2rem;
+}
+
+.navbar-side{
+    background-color: white;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 30%;
+    height: 100vh;
+    z-index: 2;
+}
+
+.navbar-list{
+    font-family: 'Gothic A1';
+
+    height: 100vh;
+}
+
+.navbar-items{
+    padding-top: 8rem;
+    padding-left: 2rem;
+
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.navbar-items ul{
+    list-style: none;
+}
+.navbar-items li{
+    margin-top: 2rem;
+    cursor: pointer;
+}
+.navbar-items li:hover{
+    text-decoration: underline;
+}
+
+
+.scrollArea{
+    width: 30%;
+    min-width: 300px;
+    max-width: 400px;
+    height: 100vh;
+
+    position: absolute;
+    right: 2rem;
+    background-color: aliceblue;
+}
+
+.console{
+    min-width: 300px;
+    max-width: 400px;
+    height: fit-content;
+
+    border-radius: 2rem;
+
+    z-index: 2;
+
+    margin-top: 2rem;
+    background-color: white;
+}
+
+.card-header{
+    font-family: 'Gothic A1';
+    font-weight: bold;
+    font-size: 2.5rem;
+    background-color: Tomato !important;
+    color: white;
+}
+
+#footer{
+    position: absolute;
+    bottom: 2rem;
+}
+
+/* Place */
+#add-place{
+    display: none;
+}
+.place-card{
+    z-index: 2;
+     min-width: 300px;
+    max-width: 400px;
+    height: 120px;
+    background-color: white;
+    display: block;
+    margin-top: 1rem;
+
+    border-left: 0.5rem solid tomato !important;
+}
+
+.add-this-place-btn{
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 1rem;
+    border-radius: 50%;
+    background-color: tomato;
+    float: right;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+}
+.myplace-markerbg{
+     float:left;
+    position:absolute;
+    width:36px;height:37px;margin:-10px 0 0 -10px;
+    background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png) no-repeat;
+}
+.markerbg {
+    float:left;
+    position:absolute;
+    width:36px;height:37px;margin:-10px 0 0 -10px;
+    background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png) no-repeat;
+}
+.marker_1 {background-position: 0 -10px;}
+.marker_2 {background-position: 0 -56px;}
+.marker_3 {background-position: 0 -102px}
+.marker_4 {background-position: 0 -148px;}
+.marker_5 {background-position: 0 -194px;}
+.marker_6 {background-position: 0 -240px;}
+.marker_7 {background-position: 0 -286px;}
+.marker_8 {background-position: 0 -332px;}
+.marker_9 {background-position: 0 -378px;}
+.marker_10 {background-position: 0 -423px;}
+.marker_11 {background-position: 0 -470px;}
+.marker_12 {background-position: 0 -516px;}
+.marker_13 {background-position: 0 -562px;}
+.marker_14 {background-position: 0 -608px;}
+.marker_15 {background-position: 0 -654px;}
+
+
+/* Star */
+#rate-place{
+    display: none;
+}
+.star-rate{
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    width: 12rem;
+}
+.star-item{
+    flex: 1;
+    text-align: center;
+    border: 1px solid lightgray;
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.5rem;
+}
+
+input[type=radio]{
+    display:none;
+    margin:10px;
+}
+
+#star-popup{
+
+}
+
+
+/* Group */
+
+#group{
+    display: none;
+}
+
+.group-item{
+    width: 150px;
+    height: 150px;
+    margin: 1rem;
+    border-radius: 10px;
+    background-color: tomato;
+    color: white;
+    line-height: 150px;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+#add-group{
+    display: none;
+}
+
+#group-info .member-list{
+
+}
+
+#group-info .member-item{
+    margin: 5px;
+    height: 2rem;
+    border-radius: 1rem;
+    width: fit-content;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    text-align: center;
+    background-color: white;
+    color: #262525;
+    border: 1px solid tomato;
+}
+#group-info .member-item:hover{
+    background-color: tomato;
+    color: white;
+}
