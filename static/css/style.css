@@ -140,12 +140,7 @@ body { font-family: 'Do Hyeon', sans-serif;, cursive; margin: 0; padding: 0; }
     text-align: center;
     cursor: pointer;
 }
-.myplace-markerbg{
-     float:left;
-    position:absolute;
-    width:36px;height:37px;margin:-10px 0 0 -10px;
-    background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png) no-repeat;
-}
+
 .markerbg {
     float:left;
     position:absolute;
@@ -220,8 +215,8 @@ input[type=radio]{
     display: none;
 }
 
-#group-info .member-list{
-
+#group-info{
+    display: none;
 }
 
 #group-info .member-item{
@@ -239,4 +234,12 @@ input[type=radio]{
 #group-info .member-item:hover{
     background-color: tomato;
     color: white;
+}
+
+#join-group{
+    display: none;
+}
+
+#group-timeline{
+    display: none;
 }

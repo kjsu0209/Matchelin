@@ -3,6 +3,10 @@ $("#group-btn").click(function(){
     openConsole("group");
 })
 
+$("#join-group-btn").click(function(){
+    openConsole("join-group");
+})
+
 $('#add-place-btn').click(function(){
     openConsole("add-place");
 
@@ -20,6 +24,9 @@ function openConsole(console){
     $('#add-place').css('display', 'none');
     $('#rate-place').css('display', 'none');
     $('#add-group').css('display', 'none');
+    $('#group-info').css('display', 'none');
+    $('#join-group').css('display', 'none');
+    $('#group-timeline').css('display', 'none');
 
     // target console 열기
     if(console == "main-console"){
@@ -38,6 +45,25 @@ function openConsole(console){
     else if(console == "rate-place"){
         $('#rate-place').css('display', 'block');
     }
+    else if(console == "group-info"){
+        $('#group-timeline .place-card').remove();
+        $('#group-info').css('display', 'block');
+        $('#group-timeline').css('display', 'block');
+    }
+    else if(console == "join-group"){
+        $('#join-group').css('display', 'block');
+    }
+}
 
+// Toast Message
+var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+var toastList = toastElList.map(function (toastEl) {
+  return new bootstrap.Toast(toastEl, {'delay': 3000})
+})
 
+function showToast(msg){
+    var myToastEl = document.getElementById('myToastEl')
+    var myToast = bootstrap.Toast.getInstance(myToastEl) // Returns a Bootstrap toast instance
+    $('.toast-body').text(msg);
+    myToast.show();
 }

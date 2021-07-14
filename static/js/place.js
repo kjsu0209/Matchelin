@@ -20,7 +20,7 @@ function addPlaceForm(num){
 		}
 	})
 	.done( function (response) {
-		console.log(response);
+		//console.log(response);
 
 	})
 
@@ -58,7 +58,8 @@ $("#rate-place-btn").click(function(){
 	})
 	.done( function (response) {
 		// console.log(response);
-		alert("맛집 평가 완료");
+		showToast("맛집 평가가 완료되었습니다.");
+		openConsole("add-place");
 		displayMyPlaces();
 	})
 });

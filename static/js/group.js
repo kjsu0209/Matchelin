@@ -78,16 +78,69 @@ function openGroupPage(group_id){
 		}
     })
     .done( function (response) {
-        console.log(response);
         let group = response['group'];
+        let members = group['member'];
         let places = response['places'];
         // 그룹 정보 콘솔 표시
-        openconsole("group-info");
+        openConsole("group-info");
 
+        $(".g-group-name").text(group['group_name']);
+        $("#g-group-desc").text(group['desc']);
+        $(".member-item").remove();
+
+        members.forEach(function(el, index){
+            let obj = $("<div>");
+            obj.addClass("member-item");
+            obj.text(el);
+
+            $("#g-member-list").append(obj);
+        })
+
+        let invite_link = `<div class="member-item" id="invite-code-btn">초대 코드 `+
+            `<input type="text" id="invite-code-input" style="border: none;height:100%;" readonly value="`+ group['_id'] +`">&nbsp;<i class="fa fa-copy" onclick="inviteCode()"></i></div>`;
+        $("#g-member-list").append(invite_link);
 
         // 그룹 맛집 마커로 표시
-        displayMyPlaces(places);
+        displayMyPlaces(places, group['color']);
+
+        // 그룹 맛집 랭킹 표시
+        displayMyPlacesList(places.filter(function(el){
+            return el['rate_avg'] >= 4;
+        }));
     });
 
-
 }
+
+function inviteCode(){
+    var copyText = document.getElementById("invite-code-input");
+    copyText.select();
+    document.execCommand("Copy");
+    showToast("초대 코드가 복사되었습니다.");
+}
+
+$('#group_invite_code_submit_btn').click(function(){
+    let group_code = $('#group_invite_code_input').val();
+    let data = {
+        'group_id': group_code
+    }
+    $.ajax({
+        'url': 'http://127.0.0.1:5000/group/member',
+        'type': 'post',
+        'data': data,
+		'beforeSend': function () {
+			// anything you want to have happen before sending the data to the server...
+			// useful for "loading" animations
+		}
+    })
+    .done(function(response){
+        if(response['result'] == 'OK'){
+            showToast("성공적으로 그룹에 가입했습니다!");
+            reloadGroup();
+        }
+        else{
+            showToast(response['errMsg']);
+        }
+    })
+
+
+})

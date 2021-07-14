@@ -19,8 +19,7 @@
           <li id="home-btn">나의 맛집지도</li>
         <li id="add-place-btn">맛집 추가</li>
         <li id="group-btn">나의 그룹</li>
-        <li>그룹 찾기</li>
-        <li>그룹 찾기</li>
+        <li id="join-group-btn">그룹 가입하기</li>
       </ul>
     </div>
      <div id="footer">
@@ -39,8 +38,19 @@
     {% include 'console/group-console.html' %}
     {% include 'console/add-group.html' %}
     {% include 'console/group-info.html' %}
+    {% include 'console/join-group.html' %}
 
   </div>
 
+
+{# Toast #}
+<div class="toast align-items-center text-white border-0" role="alert" style="z-index: 2; position:absolute; bottom: 2rem;background-color: tomato;" aria-live="assertive" aria-atomic="true" id="myToastEl">
+  <div class="d-flex">
+    <div class="toast-body">
+    Hello, world! This is a toast message.
+   </div>
+    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+  </div>
+</div>
 
 {% include 'footer.html' %}
