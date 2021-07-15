@@ -12,13 +12,19 @@
 <div class="navbar-side collapse" id="navbarTogglerDemo01">
   <div class="navbar-list">
     <div class="memberInfo">
+        {% if session['user_id'] %}
         <a href="/logout">로그아웃</a>
+        {% else %}
+            <a href="/home">로그인</a>
+        {% endif %}
     </div>
     <div class="navbar-items">
       <ul>
+          {% if session['user_id'] %}
           <li id="home-btn">나의 맛집지도</li>
         <li id="add-place-btn">맛집 추가</li>
         <li id="group-btn">나의 그룹</li>
+          {% endif %}
         <li id="join-group-btn">그룹 가입하기</li>
       </ul>
     </div>
@@ -31,6 +37,7 @@
   <div class="scrollArea" id="scroll-area">
 
     {% include 'console/main-console.html' %}
+    {% include 'console/place-info.html' %}
 
     {% include 'console/add-place.html' %}
     {% include 'console/rate-place.html' %}

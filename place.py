@@ -1,6 +1,8 @@
 from bson import ObjectId
 from flask import Blueprint, session, request, redirect, url_for, jsonify
-import db
+
+import config
+import db, requests
 
 database = db.get_db()
 bp = Blueprint('place', __name__, url_prefix='/place')
@@ -13,7 +15,14 @@ def find_my_places():
 
         places = []
         for place in my_places['place']:
-            places.append(database.places.find_one({'_id': place}))
+            p = database.places.find_one({'_id': place})
+
+            # 내 평점만 볼 수 있게
+            for r in p['rates']:
+                if r['user_id'] == session['user_id']:
+                    p['rate_avg'] = r['point']
+                    break
+            places.append(p)
 
         return jsonify({"places": places})
     else:
@@ -99,3 +108,28 @@ def rate_place():
     else:
         err = '먼저 로그인을 해주세요'
         return redirect(url_for('home'))
+
+
+# 상호명으로 이미지/블로그 검색해서 리스트 반환
+@bp.route('/timeline/<string:place_name>/<page>', methods=['GET'])
+def get_place_timeline(place_name, page):
+    result = "OK"
+
+    rest_api_key = config.get_api_key()['rest_api']
+    image_result = requests.get(
+        f"https://dapi.kakao.com/v2/search/image?query={place_name}&page={page}&size=4",
+        headers={"Authorization": f"KakaoAK {rest_api_key}"}
+    ).json()
+
+    if image_result["meta"]["is_end"] is True:
+        result = "EOF"
+
+    blog_result = requests.get(
+        f"https://dapi.kakao.com/v2/search/blog?query={place_name}&page={page}&size=2",
+        headers={"Authorization": f"KakaoAK {rest_api_key}"},
+    ).json()
+
+    if blog_result["meta"]["is_end"] is True:
+        result = "EOF"
+
+    return jsonify({"result": result, "images": image_result["documents"], "blogs": blog_result["documents"]})

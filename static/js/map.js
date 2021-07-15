@@ -106,8 +106,54 @@ function displayMyPlaces(){
                 });
 
             })(marker, places[i]);
+		    addCustomOverlay(marker, places[i]);
         }
 	})
+
+}
+
+function addCustomOverlay(marker, place){
+    // 커스텀 오버레이
+    // 커스텀 오버레이에 표시할 컨텐츠 입니다
+    // 커스텀 오버레이는 아래와 같이 사용자가 자유롭게 컨텐츠를 구성하고 이벤트를 제어할 수 있기 때문에
+    // 별도의 이벤트 메소드를 제공하지 않습니다
+
+    let content = '<div class="wrap">' +
+                '    <div class="info">' +
+                '        <div class="title">' +
+                            place["place_data"]["place_name"] +
+                '               <span style="position:absolute;right:1rem;font-size:1rem;"><i class="fa fa-star" style="color: #F4D03F;"></i> '+ place['rate_avg'] +'</span>' +
+                '        </div>' +
+                '        <div class="body" style="padding:1rem;">' +
+                '               <input type="hidden" value="' + place['place_data']['lat'] +'" name="latitude">' +
+                '               <input type="hidden" value="' + place['place_data']['lng'] +'" name="longitude">' +
+                '                <div class="ellipsis">'+ place["place_data"]["address_name"] +'</div>' +
+                '                <div class="jibun ellipsis">Tel: ' + place["place_data"]["phone"] +'</div>' +
+                '                <div class="hover-the-rainbow" onclick="openConsole(`rate-place`)">❤맛집 평가하기</div>' +
+                '        </div>' +
+                '    </div>' +
+                '</div>';
+
+    // 마커 위에 커스텀오버레이를 표시합니다
+    // 마커를 중심으로 커스텀 오버레이를 표시하기위해 CSS를 이용해 위치를 설정했습니다
+    let overlay = new kakao.maps.CustomOverlay({
+        content: content,
+        map: map,
+        clickable: true,
+        position: marker.getPosition()
+    });
+    overlay.setVisible(false);
+    // 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
+    kakao.maps.event.addListener(marker, 'click', function() {
+        if(overlay.getVisible())
+            overlay.setVisible(false);
+        else{
+            overlay.setVisible(true);
+            $("#place-info-title").text(place['place_data']['place_name']);
+            openConsole('place-info');
+        }
+    });
+
 
 }
 
@@ -254,6 +300,7 @@ function addMarker(position, idx, mode) {
     }
 
 
+
     var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imgOptions),
             marker = new kakao.maps.Marker({
             position: position, // 마커의 위치
@@ -314,6 +361,9 @@ function displayInfowindowWithTitle(marker, title) {
 function removeAllChildNods(el) {
     $('.place-card').remove();
 }
+
+
+
 
 $(document).ready(function(){
 	moveCurruntPos();

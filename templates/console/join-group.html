@@ -3,11 +3,12 @@
         그룹 가입
     </div>
     <div class="card-body">
-        <p>그룹에 가입하려면 로그인이 필요합니다.</p>
-
-        <p>초대 코드를 입력하세요.</p>
-        <input type="text" name="group_invite_code_input" id="group_invite_code_input" />
-        <button class="btn" id="group_invite_code_submit_btn" style="background-color: tomato;color:white;">가입</button>
-
+        {% if session['user_id'] %}
+            <p>초대 코드를 입력하세요.</p>
+            <input type="text" name="group_invite_code_input" id="group_invite_code_input" />
+            <button class="btn" id="group_invite_code_submit_btn" style="background-color: tomato;color:white;">가입</button>
+        {% else %}
+            <p>그룹에 가입하려면 로그인이 필요합니다.</p>
+        {% endif %}
     </div>
 </div>

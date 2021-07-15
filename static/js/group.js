@@ -103,9 +103,9 @@ function openGroupPage(group_id){
         // 그룹 맛집 마커로 표시
         displayMyPlaces(places, group['color']);
 
-        // 그룹 맛집 랭킹 표시
+        // 그룹 맛집 랭킹 표시 (평균 4점이 넘어야 하고, 그룹원 모두가 평가해야 한다)
         displayMyPlacesList(places.filter(function(el){
-            return el['rate_avg'] >= 4;
+            return el['rate_avg'] >= 4 && el['rate_mber_num'] == members.length;
         }));
     });
 

@@ -75,6 +75,8 @@ def search_group_by_id(group_id):
         if mber_num > 0:
             place_info['rate_avg'] = rate_sum/mber_num
 
+        place_info['rate_mber_num'] = mber_num # 별점 남긴 회원 수 field 추가
+
         places.append(place_info)
 
     places.sort(key=lambda p: p['rate_avg'], reverse=True)

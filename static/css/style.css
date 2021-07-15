@@ -5,6 +5,9 @@ body { font-family: 'Do Hyeon', sans-serif;, cursive; margin: 0; padding: 0; }
 .flex-center { display: flex; flex-direction: column; justify-content: center; align-items: center; }
 .text-xl { font-size: 4rem; }
 
+a:link { color: black; text-decoration: none;}
+ a:visited { color: black; text-decoration: none;}
+ a:hover { color: black; text-decoration: underline;}
 
 #map{
     width: 100vw;
@@ -164,6 +167,23 @@ body { font-family: 'Do Hyeon', sans-serif;, cursive; margin: 0; padding: 0; }
 .marker_15 {background-position: 0 -654px;}
 
 
+/*custom overlay*/
+ .wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
+.wrap * {padding: 0;margin: 0;}
+.wrap .info {width: 286px;height: 120px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
+.wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
+.info .title {padding: 5px 0 0 10px;height: 30px;background: #eee;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
+.info .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
+.info .close:hover {cursor: pointer;}
+.info .body {position: relative;overflow: hidden;}
+.info .desc {position: relative;margin: 13px 0 0 90px;height: 75px;}
+.desc .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.desc .jibun {font-size: 11px;color: #888;margin-top: -2px;}
+.info .img {position: absolute;top: 6px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
+.info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
+.info .link {color: #5085BB;}
+
+
 /* Star */
 #rate-place{
     display: none;
@@ -242,4 +262,85 @@ input[type=radio]{
 
 #group-timeline{
     display: none;
+}
+
+.hover-the-rainbow{
+    cursor: pointer;
+}
+
+.hover-the-rainbow:hover{
+    animation: color-change 1s infinite;
+}
+
+@keyframes color-change{
+    0% {color: #fd8d70;}
+    10% {color: #ffbc47;}
+    20% {color: #b8ff47;}
+    30% {color: #47ffa9;}
+    40% {color: #47d4ff;}
+    50% {color: #4775ff;}
+    60% {color: #6347ff;}
+    70% {color: #a947ff;}
+    80% {color: #ff47f6;}
+    90% {color: #ff477b;}
+    100% {color: #ff4747;}
+}
+
+
+
+/* timeline */
+#place-info{
+    display: none;
+}
+
+.timeline-block{
+    width: 100%;
+    min-height: 100px;
+    z-index: 2;
+    background-color: white;
+    border: 1px solid lightgray;
+    margin-bottom: 1rem;
+}
+
+.tl-image-block{
+    width: 50%;
+    min-height: 100px;
+    z-index: 2;
+    background-color: white;
+    border: 1px solid lightgray;
+    margin-bottom: 1rem;
+
+}
+
+.tl-blog-block{
+    padding: 1rem;
+    font-family: "나눔스퀘어라운드 Regular";
+}
+
+.tl-blog-block > span{
+    height: 100px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+#load-more-place-timeline{
+    margin-left: auto;
+    margin-right: auto;
+    height: 2rem;
+    border-radius: 1rem;
+    width: fit-content;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    text-align: center;
+    line-height: 1.5rem;
+    background-color: white;
+    color: tomato;
+    border: 1px solid tomato;
+    z-index: 2;
+}
+
+#load-more-place-timeline:hover{
+    background-color: tomato;
+    color: white;
 }

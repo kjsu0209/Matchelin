@@ -23,6 +23,7 @@ function openConsole(console){
     $('#group').css('display', 'none');
     $('#add-place').css('display', 'none');
     $('#rate-place').css('display', 'none');
+    $('#place-info').css('display', 'none');
     $('#add-group').css('display', 'none');
     $('#group-info').css('display', 'none');
     $('#join-group').css('display', 'none');
@@ -52,6 +53,13 @@ function openConsole(console){
     }
     else if(console == "join-group"){
         $('#join-group').css('display', 'block');
+    }
+    else if(console == "place-info"){
+        $('.timeline-block').remove();
+        $('.tl-image-block').remove();
+        initPlaceTimeLine();
+        getPlaceTimeLine();
+        $('#place-info').css('display', 'block');
     }
 }
 
