@@ -125,6 +125,10 @@ def add_group_member():
                                            {'$addToSet':
                                                 {'member': session['user_id']}
                                             })
+                database.users.update_one({'id': session['user_id']},
+                                          {'$addToSet':
+                                               {'groups': ObjectId(request.form['group_id'])}
+                                           })
         except bson.errors.InvalidId:
             err = '잘못된 그룹 초대 코드입니다.'
             result = 'ERR'
