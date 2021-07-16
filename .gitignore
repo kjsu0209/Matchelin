@@ -6,6 +6,7 @@ firestore.rules
 firestore.indexes.json
 .idea/*
 config.py
+.well-known/**
 
 # Created by https://www.toptal.com/developers/gitignore/api/firebase,flask
 # Edit at https://www.toptal.com/developers/gitignore?templates=firebase,flask
