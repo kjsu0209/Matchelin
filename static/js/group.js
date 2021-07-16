@@ -13,7 +13,7 @@ $("#add-group-submit-btn").click(function(){
 
     // api 호출해서 추가하고 그룹 id 받기
     $.ajax({
-        'url': 'http://127.0.0.1:5000/group/',
+        'url': URL + '/group/',
         'data': data,
         'type': 'post',
 		'beforeSend': function () {
@@ -36,7 +36,7 @@ $("#add-group-submit-btn").click(function(){
 
 function reloadGroup(){
     $.ajax({
-        'url': 'http://127.0.0.1:5000/group/',
+        'url': URL + '/group/',
         'type': 'get',
 		'beforeSend': function () {
 			// anything you want to have happen before sending the data to the server...
@@ -70,7 +70,7 @@ function reloadGroup(){
 // 그룹 버튼 클릭하면 그룹 정보 콘솔 표시
 function openGroupPage(group_id){
     $.ajax({
-        'url': 'http://127.0.0.1:5000/group/'+group_id,
+        'url': URL + '/group/'+group_id,
         'type': 'get',
 		'beforeSend': function () {
 			// anything you want to have happen before sending the data to the server...
@@ -124,7 +124,7 @@ $('#group_invite_code_submit_btn').click(function(){
         'group_id': group_code
     }
     $.ajax({
-        'url': 'http://127.0.0.1:5000/group/member',
+        'url': URL + '/group/member',
         'type': 'post',
         'data': data,
 		'beforeSend': function () {

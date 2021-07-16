@@ -82,7 +82,7 @@ function displayMyPlaces(){
 
     // api 호출해서 추가하고 장소 id 받기
 	$.ajax({
-		'url': 'http://127.0.0.1:5000/place/',
+		'url': URL + '/place/',
 		'type': 'get',
 		'beforeSend': function () {
 			// 로딩중 표시

@@ -9,7 +9,7 @@ $('#kakao-login-btn').click(function(){
     //   redirectUri: 'http://127.0.0.1:5000/login'
     // });
 
-    window.location.href = 'http://127.0.0.1:5000/kakaoauth';
+    window.location.href = URL + '/kakaoauth';
 })
 
 $('#kakao-logout').click(function(){

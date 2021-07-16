@@ -1,5 +1,5 @@
 from flask import Flask, render_template, make_response
-from config import get_api_key
+from config import get_api_key, get_url
 from flask import request
 import os
 import time
@@ -41,7 +41,7 @@ from flask import redirect, url_for, session
 def kakao_auth():
     # 회원번호 받기
     client_id = get_api_key()['client_id']
-    redirect_uri = 'http://127.0.0.1:5000/login'
+    redirect_uri = get_url() + '/login'
 
     url = f"https://kauth.kakao.com/oauth/authorize?client_id={client_id}&redirect_uri={redirect_uri}&response_type=code"
 
@@ -54,7 +54,7 @@ def login():
     auth_code = request.args.get('code')
 
     client_id = get_api_key()['client_id']
-    uri = "http://127.0.0.1:5000/login"
+    uri = get_url() + "/login"
     token_request = requests.post(
         f"https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id={client_id}&redirect_uri={uri}&code={auth_code}"
     )

@@ -11,7 +11,7 @@ function addPlaceForm(num){
 
     // api 호출해서 추가하고 장소 id 받기
 	$.ajax({
-		'url': 'http://127.0.0.1:5000/place/',
+		'url': URL + '/place/',
 		'data': data,
 		'type': 'post',
 		'beforeSend': function () {
@@ -48,7 +48,7 @@ $("#rate-place-btn").click(function(){
 
     // ajax PUT
     $.ajax({
-		'url': 'http://127.0.0.1:5000/place/',
+		'url': URL + '/place/',
 		'data': data,
 		'type': 'put',
 		'beforeSend': function () {
@@ -83,7 +83,7 @@ function getPlaceTimeLine(){
     let loadMore = '<div id="load-more-place-timeline" onclick="loadNewPlaceTimeline()" class="btn"><i class="fa fa-plus"></i>&nbsp; 더 많은 정보 불러오기</div>';
 
      $.ajax({
-        'url': 'http://127.0.0.1:5000/place/timeline/'+$('#place-info-title').text()+"/"+count,
+        'url': URL+'/place/timeline/'+$('#place-info-title').text()+"/"+count,
         'type': 'get',
         'beforeSend': function () {
             // anything you want to have happen before sending the data to the server...
