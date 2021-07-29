@@ -41,5 +41,6 @@
 - rate.py : 별점 관리 api 모듈
 
 ## Screenshots
-
+![image](https://user-images.githubusercontent.com/35682236/127429162-f3ca0900-8cce-4438-ab00-8319cf03b876.png)
+![image](https://user-images.githubusercontent.com/35682236/127429193-825d6665-d148-4250-a5e5-f38f284dffb6.png)
 
